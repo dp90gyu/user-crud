@@ -122,59 +122,60 @@ const UserTable: React.FC<UserTableProps> = ({ users, onEdit, onDelete, onView, 
             });
             
             return (
-            <tr key={user.id}>
-              <td>
-                <div className="user-info">
-                  <div 
-                    className="user-avatar"
-                    data-user-id={user.id}
-                    data-user-name={user.name || 'no-name'}
-                    data-avatar-text={generateAvatarText(user.name)}
-                    title={`Avatar for ${user.name || 'Unnamed User'}`}
-                  >
-                    {ensureAvatarContent(generateAvatarText(user.name))}
+              <tr key={user.id}>
+                <td>
+                  <div className="user-info">
+                    <div 
+                      className="user-avatar"
+                      data-user-id={user.id}
+                      data-user-name={user.name || 'no-name'}
+                      data-avatar-text={generateAvatarText(user.name)}
+                      title={`Avatar for ${user.name || 'Unnamed User'}`}
+                    >
+                      {ensureAvatarContent(generateAvatarText(user.name))}
+                    </div>
+                    <div className="user-details">
+                      <div className="user-name">{user.name || 'Unnamed User'}</div>
+                      <div className="user-email">{user.email || 'No email'}</div>
+                    </div>
                   </div>
-                  <div className="user-details">
-                    <div className="user-name">{user.name || 'Unnamed User'}</div>
-                    <div className="user-email">{user.email || 'No email'}</div>
+                </td>
+                <td>
+                  <a href={`mailto:${user.email || '#'}`} className="user-email">
+                    {user.email || 'No email'}
+                  </a>
+                </td>
+                <td>
+                  <span className="user-phone">{user.phone || 'No phone'}</span>
+                </td>
+                <td>
+                  <div className="action-buttons">
+                    <button
+                      className="action-btn btn-view"
+                      onClick={() => onView(user)}
+                      title="View User"
+                    >
+                      👁️
+                    </button>
+                    <button
+                      className="action-btn btn-edit"
+                      onClick={() => onEdit(user)}
+                      title="Edit User"
+                    >
+                      ✏️
+                    </button>
+                    <button
+                      className="action-btn btn-delete"
+                      onClick={() => onDelete(user.id)}
+                      title="Delete User"
+                    >
+                      🗑️
+                    </button>
                   </div>
-                </div>
-              </td>
-              <td>
-                <a href={`mailto:${user.email || '#'}`} className="user-email">
-                  {user.email || 'No email'}
-                </a>
-              </td>
-              <td>
-                <span className="user-phone">{user.phone || 'No phone'}</span>
-              </td>
-              <td>
-                <div className="action-buttons">
-                  <button
-                    className="action-btn btn-view"
-                    onClick={() => onView(user)}
-                    title="View User"
-                  >
-                    👁️
-                  </button>
-                  <button
-                    className="action-btn btn-edit"
-                    onClick={() => onEdit(user)}
-                    title="Edit User"
-                  >
-                    ✏️
-                  </button>
-                  <button
-                    className="action-btn btn-delete"
-                    onClick={() => onDelete(user.id)}
-                    title="Delete User"
-                  >
-                    🗑️
-                  </button>
-                </div>
-              </td>
-            </tr>
-          ))}
+                </td>
+              </tr>
+            );
+          })}
         </tbody>
       </table>
     </div>

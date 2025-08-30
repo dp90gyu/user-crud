@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import { useUsers } from '../context/UserContext';
 import { userService } from '../api/users';
 import UserTable from '../components/UserTable';
-import SkeletonLoader from '../components/SkeletonLoader';
 import Toast from '../components/Toast';
 import './UsersList.css';
 
